@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Button, Text, TextInput, StyleSheet } from 'react-native';
 import ZegoExpressEngine from 'zego-express-engine-reactnative';
 import Share from 'react-native-share';
-import { AppRegistry } from 'react-native';
 
-// ZEGOCLOUD credentials
-const appID = 144919046; // Replace with your App ID
-const appSignalingKey = '9077f5ac7988aa383be1ac320f8f599c'; // Replace with your App Signaling Key
+
+
+const appID = 144919046; 
+const appSignalingKey = '9077f5ac7988aa383be1ac320f8f599c';
 
 const App = () => {
   const [state, setState] = useState({
@@ -20,7 +20,7 @@ const App = () => {
   const engine = useRef(null);
 
   useEffect(() => {
-    // Initialize ZegoEngine
+ 
     engine.current = ZegoExpressEngine.createEngine(
       appID,
       appSignalingKey,
@@ -28,7 +28,7 @@ const App = () => {
     );
 
     return () => {
-      // Clean up resources
+     
       engine.current?.logoutRoom(state.roomID);
       ZegoExpressEngine.destroyEngine();
     };
@@ -164,6 +164,5 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('VideocallApp', () => App);
 
 export default App;
